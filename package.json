@@ -1,0 +1,29 @@
+{
+  "name": "markdown-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for converting web pages to clean markdown. Supports outline extraction, section fetching, and content search.",
+  "main": "index.js",
+  "bin": {
+    "markdown-mcp": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "markdown",
+    "web",
+    "html-to-markdown",
+    "web-scraping"
+  ],
+  "author": "ContextSeal <hello@contextseal.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "turndown": "^7.2.2"
+  }
+}
