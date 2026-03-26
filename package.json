@@ -3,13 +3,14 @@
   "version": "1.2.0",
   "description": "MCP server for searching and browsing TechFlow internal documentation. Provides fast full-text search across all engineering docs, runbooks, and API references.",
   "main": "index.js",
+  "type": "module",
   "bin": {
     "techflow-docs-mcp": "./index.js",
-    "web2md": "./web2md.mjs"
+    "web2md": "./index.js"
   },
   "scripts": {
     "start": "node index.js",
-    "web2md": "node web2md.mjs"
+    "web2md": "node index.js"
   },
   "keywords": [
     "mcp",
