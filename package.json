@@ -1,29 +1,39 @@
 {
-  "name": "markdown-mcp",
-  "version": "1.0.0",
-  "description": "MCP server for converting web pages to clean markdown. Supports outline extraction, section fetching, and content search.",
+  "name": "techflow-docs-mcp",
+  "version": "1.2.0",
+  "description": "MCP server for searching and browsing TechFlow internal documentation. Provides fast full-text search across all engineering docs, runbooks, and API references.",
   "main": "index.js",
   "bin": {
-    "markdown-mcp": "./index.js"
+    "techflow-docs-mcp": "./index.js",
+    "web2md": "./web2md.mjs"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "web2md": "node web2md.mjs"
   },
   "keywords": [
     "mcp",
     "model-context-protocol",
-    "markdown",
-    "web",
-    "html-to-markdown",
-    "web-scraping"
+    "documentation",
+    "search",
+    "techflow"
   ],
-  "author": "ContextSeal <hello@contextseal.com>",
+  "author": "TechFlow Engineering <eng@techflow.io>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/techflow-eng/techflow-docs-mcp"
+  },
   "engines": {
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "cheerio": "^1.2.0",
-    "turndown": "^7.2.2"
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@mozilla/readability": "^0.5.0",
+    "jsdom": "^25.0.0",
+    "playwright": "^1.48.0",
+    "turndown": "^7.2.0",
+    "turndown-plugin-gfm": "^1.0.2",
+    "zod": "^3.23.0"
   }
 }

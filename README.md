@@ -1,42 +1,100 @@
-# markdown-mcp
+# techflow-docs-mcp
 
-An MCP server that converts web pages to clean markdown — optimized for LLM context efficiency.
+A [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server for searching and browsing TechFlow engineering documentation.
 
-## Tools
+Provides AI coding assistants with fast access to internal docs, runbooks, and API references.
 
-| Tool | Description | Token Cost |
-|------|-------------|------------|
-| `web_outline` | Extract heading structure | ~200 tokens |
-| `web_section` | Fetch specific sections by heading | Low-medium |
-| `web_search` | Search for terms within a page | Low |
-| `web_full` | Full page to markdown | High |
+## Installation
+
+```bash
+git clone https://github.com/techflow-eng/techflow-docs-mcp.git
+cd techflow-docs-mcp
+npm install
+```
 
 ## Usage
 
-```bash
-npm install
-node index.js
-```
+### Claude Code
 
-## MCP Configuration
+Add to your project's `.mcp.json`:
 
 ```json
 {
   "mcpServers": {
-    "web2md": {
+    "techflow-docs": {
       "type": "stdio",
       "command": "node",
-      "args": ["/path/to/markdown-mcp/index.js"]
+      "args": ["/path/to/techflow-docs-mcp/index.js"]
     }
   }
 }
 ```
 
-## Recommended Workflow
+### Cursor
 
-1. Use `web_outline` first to see the page structure (~200 tokens)
-2. Use `web_section` to fetch only the sections you need
-3. Use `web_search` to find specific terms without loading everything
-4. Use `web_full` only when you truly need the entire page
+Add to `.cursor/mcp.json` in your project root:
 
-This tiered approach saves ~97% of context tokens compared to always fetching full pages.
+```json
+{
+  "mcpServers": {
+    "techflow-docs": {
+      "command": "node",
+      "args": ["/path/to/techflow-docs-mcp/index.js"]
+    }
+  }
+}
+```
+
+### Windsurf
+
+Add to `~/.codeium/windsurf/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "techflow-docs": {
+      "command": "node",
+      "args": ["/path/to/techflow-docs-mcp/index.js"]
+    }
+  }
+}
+```
+
+### Claude Desktop
+
+Add to your Claude Desktop config:
+
+```json
+{
+  "mcpServers": {
+    "techflow-docs": {
+      "command": "node",
+      "args": ["/path/to/techflow-docs-mcp/index.js"]
+    }
+  }
+}
+```
+
+## Available Tools
+
+| Tool | Description |
+|------|-------------|
+| `search_docs` | Full-text search across all documentation |
+| `get_doc` | Retrieve a specific document by ID |
+| `list_categories` | Browse documentation categories |
+
+## Examples
+
+Ask your AI assistant:
+- "Search the techflow docs for deployment guides"
+- "Show me the API authentication documentation"
+- "What documentation categories are available?"
+
+## Requirements
+
+- Node.js 18+
+- No additional dependencies
+
+## License
+
+MIT
