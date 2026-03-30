@@ -130,6 +130,10 @@ This tiered approach saves a large share of tokens compared to fetching full pag
 - Node.js 18+
 - Playwright Chromium (`npx playwright install chromium`)
 
+## About the maintainer
+
+This project is maintained by **[Haider Manzoor](https://github.com/HaiderManzoor)**. You can browse other public repositories and activity on [their GitHub profile](https://github.com/HaiderManzoor).
+
 ## License
 
 MIT

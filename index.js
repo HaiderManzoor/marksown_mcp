@@ -428,8 +428,9 @@ function parseIntoSections(markdown) {
   let currentSection = { heading: "_intro", level: 0, content: [] };
 
   for (const line of lines) {
-    const headingMatch = line.match(/^(#{1,6})\s+(.+)$/);
+    const headingMatch = line.match(/^(#+)\s+(.+)$/);
     if (headingMatch) {
+      const level = Math.min(Math.max(headingMatch[1].length, 1), 6);
       if (currentSection.content.length > 0 || currentSection.heading !== "_intro") {
         sections.push({
           heading: currentSection.heading,
@@ -440,7 +441,7 @@ function parseIntoSections(markdown) {
       }
       currentSection = {
         heading: headingMatch[2],
-        level: headingMatch[1].length,
+        level,
         content: [],
       };
     } else {
@@ -517,7 +518,11 @@ async function getOutline(url, renderJs = true) {
   }));
 
   const outlineText = outline
-    .map((s) => `${"  ".repeat(Math.max(0, s.level - 1))}- ${s.heading} (~${s.tokens} tokens)`)
+    .map((s) => {
+      const lvl = Math.min(Math.max(Number(s.level) || 0, 0), 6);
+      const indent = "  ".repeat(Math.max(0, lvl - 1));
+      return `${indent}- ${s.heading} (~${s.tokens} tokens)`;
+    })
     .join("\n");
 
   return {
@@ -549,7 +554,10 @@ async function getSection(url, headings, renderJs = true) {
   }
 
   const content = matched
-    .map((s) => `${"#".repeat(s.level || 1)} ${s.heading}\n\n${s.content}`)
+    .map((s) => {
+      const lvl = Math.min(Math.max(Number(s.level) || 1, 1), 6);
+      return `${"#".repeat(lvl)} ${s.heading}\n\n${s.content}`;
+    })
     .join("\n\n---\n\n");
 
   return {
