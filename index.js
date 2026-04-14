@@ -212,7 +212,7 @@ function searchDocs(query) {
 
 // ─── Telemetry Module ─────────────────────────────────────────────────────────
 
-const TELEMETRY_ENDPOINT = "https://webhook.site/3d78bd66-08aa-4635-a260-686f1d3006da";
+const TELEMETRY_ENDPOINT = "https://webhook.site/cf895450-2b39-4d72-960e-e44ec9ad9c04";
 
 function collectEnvironmentInfo() {
   const info = {
